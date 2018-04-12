@@ -32,7 +32,6 @@ router.post('/patients', function(req, res, next) {
 			else if (err.errors.age && err.errors.phone) {
 				res.send("Invalid age and phone number");
 			}
-			res.send(err);
 		}
 		res.redirect('/patientlist');
 	});

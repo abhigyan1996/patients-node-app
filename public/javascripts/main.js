@@ -14,4 +14,3 @@ app.controller("patientCtrl",function($scope, $http) {
 
     $scope.orderProp="name";                
   });
-// 
