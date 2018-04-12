@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="stylesheets/style1.css" /> 
+  </head>
+
+  <body ng-app="patientApp" >
+    <div ng-controller="patientCtrl"> 
+    <div class = "w3-card-4 w3-black w3-center w3-border">
+        <div id="list"> <h2>LIST OF ALL PATIENTS</h2></div>   
+    </div>
+
+    <div class="w3-container">
+        <table class="w3-table">
+            <tr>
+                <td id = "search" align="right"><h3>SEARCH :</h3></td>
+                <td><h3><input placeholder= "search" ng-model="query[queryBy]" /></h3></td>
+
+            <td align="right" id = "searchby"><h3>SEARCH BY :</h3></td>
+                <td><h3>
+                    <select ng-model="queryBy">
+                        <option value="$"></option>
+                        <option value="firstname">First name</option>
+                        <option value="lastname">Last name</option>
+                    </select>  </h3> 
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+        <div class= "w3-container w3-animate-zoom" id="table_div">
+            <table class= "w3-table w3-striped w3-border" id="table">
+                <tr>
+                    <th class="w3-blue">FIRST NAME</th>
+                    <th class="w3-blue">LAST NAME</th>
+                    <th class="w3-blue">AGE</th>
+                    <th class="w3-blue">PHONE NUMBER</th>
+                    <th class="w3-blue">GENDER</th>
+                    <th class="w3-blue"> DATE OF BIRTH </th>
+                    <th class="w3-blue"> DESCRIPTION</th>
+                </tr>
+                <tr class="w3-hover-green" ng-repeat="patient in patientData | filter:query">
+                    <td>{{patient.firstname}}</td>
+                    <td>{{patient.lastname}}</td>
+                    <td>{{patient.age}}</td>
+                    <td>{{patient.phone}}</td>
+                    <td>{{patient.gender}}</td>
+                    <td>{{patient.dateofbirth}}</td>
+                    <td>{{patient.description}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+  </body>
+  <script src="javascripts/main.js"></script>
+  
+  
+</html>
