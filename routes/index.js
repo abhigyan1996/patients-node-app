@@ -23,7 +23,10 @@ router.post('/patients', function(req, res, next) {
 	console.log(patient);
 	Patient.create(patient, function(err, patient){
 		if(err) {
-			if (err.errors.phone) {
+			if (err.errors.phone && err.errors.age) {
+				res.send('Invalid age and phone number');
+			}
+			else if (err.errors.phone) {
 				res.send('Invalid phone number');
 			}
 			else if (err.errors.age) {
