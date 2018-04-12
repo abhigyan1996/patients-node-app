@@ -23,14 +23,14 @@ router.post('/patients', function(req, res, next) {
 	console.log(patient);
 	Patient.create(patient, function(err, patient){
 		if(err) {
+			if (err.errors.age && err.errors.phone) {
+				res.send("Invalid age and phone number");
+			}
 			if (err.errors.phone) {
 				res.send("Invalid phone number");
 			}
 			else if (err.errors.age) {
 				res.send("Invalid age");
-			}
-			else if (err.errors.age && err.errors.phone) {
-				res.send("Invalid age and phone number");
 			}
 		}
 		res.redirect('/patientlist');
